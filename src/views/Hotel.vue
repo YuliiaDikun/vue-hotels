@@ -1,10 +1,9 @@
 <template>
   <div>
-    byCity
+   hotel
   </div>
 </template>
 
 <script setup>
 
 </script>
-

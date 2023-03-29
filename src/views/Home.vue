@@ -3,7 +3,7 @@
     <input
       type="text"
       class="rounded border-2 border-gray-200 w-full"
-      placeholder="Search for Cities"
+      placeholder="Where are you going?"
     />
 
     <div class="flex gap-1"></div>
@@ -44,8 +44,8 @@ onMounted(async () => {
       };
      
     const hotelSearch = await hotelInstance.post("/properties/v2/list", config);
-    const hotels =  hotelSearch.data.propertySearch.properties;
-   
+    const hotels =  hotelSearch.data.data.propertySearch.properties;
+   console.log(hotels);
   } catch (error) {
     console.log(error);
   }
