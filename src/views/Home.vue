@@ -14,7 +14,11 @@
 import axios from "axios";
 import { computed, onMounted } from "vue";
 import hotelInstance from "../service/hotelAPI";
-const today = new Date();
+
+const today = new Date().getDate();
+const tomorrow = new Date().getDate() + 1;
+const month = new Date().getMonth() + 1;
+const year = new Date().getFullYear();
 
 onMounted(async () => {
   try {
@@ -27,33 +31,21 @@ onMounted(async () => {
           regionId: locationId,
         },
         checkInDate: {
-          day: today.getDate(),
-          month: today.getMonth(),
-          year: today.getFullYear(),
+          day: today,
+          month: month,
+          year: year,
         },
         checkOutDate: {
-          day: today.getDate() + 1,
-          month: today.getMonth(),
-          year: today.getFullYear(),
+          day: tomorrow,
+          month: month,
+          year: year,
         },
         rooms: [{ adults: 1, children: [] }],
       };
-    //   console.log(config);
-    // const hotelSearch = await hotelInstance.post("/properties/v2/list", {
-    //  data: config,
-    // });
-    // console.log(hotelSearch);
-    const options = {
-      method: "POST",
-      url: "https://hotels4.p.rapidapi.com/properties/v2/list",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "a6755868dbmshd7a202f66255226p14af0bjsnfb31ddde1f36",
-        "X-RapidAPI-Host": "hotels4.p.rapidapi.com",
-      },
-      data: JSON.stringify(config),
-    };
-    const res = await axios.request(options);
+     
+    const hotelSearch = await hotelInstance.post("/properties/v2/list", config);
+    const hotels =  hotelSearch.data.propertySearch.properties;
+   
   } catch (error) {
     console.log(error);
   }
