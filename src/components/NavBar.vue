@@ -3,15 +3,15 @@
       
         <router-link
         :to="{ name: 'home' }"
-        class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100"
+        class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100  text-orange-500 font-bold"
       >
         Home
       </router-link>
-      <nav>
-        <router-link :to="{ name: 'byCity' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100">
-            City Search
+      
+        <router-link :to="{ name: 'byCity' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100  text-orange-500 font-bold">
+            Favourites
         </router-link>
-      </nav>
+      
    
     </header>
 </template>

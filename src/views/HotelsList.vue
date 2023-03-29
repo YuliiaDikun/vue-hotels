@@ -1,6 +1,6 @@
 <template>
   <div>
-    byCity
+    <h1>Your list of favourite hotels:</h1>
   </div>
 </template>
 
