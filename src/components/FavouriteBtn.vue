@@ -1,7 +1,7 @@
 <template>
   <button
     @click="setHotelToLocalStorage"
-    class="inline-block mt-auto px-3 py-1 rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
+    class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
   >
     {{ favBtnText }}
   </button>
@@ -16,9 +16,9 @@ let favBtnText = ref("Add to favourites");
 
 function setHotelToLocalStorage() {
   isFavBtnToggled.value = !isFavBtnToggled.value;
-  console.log(isFavBtnToggled.value);
+ 
   favBtnText.value = isFavBtnToggled.value
-    ? "Added to favourites"
+    ? "Remove from favourites"
     : "Add to favourites";
 
   let favHotels = getLocalStorage("favHotels");
@@ -45,13 +45,14 @@ function setHotelToLocalStorage() {
 onMounted(() => {
   let favHotels = getLocalStorage("favHotels");
   favHotels = favHotels ? favHotels : {};
+  
   if (!Object.keys(favHotels).length) {
     favBtnText.value = "Add to favourites";
     isFavBtnToggled.value = false;
   } else {
     const favHotelsId = Object.keys(favHotels);
     if (favHotelsId.includes(String(hotel.id))) {
-      favBtnText.value = "Added to favourites";
+      favBtnText.value = "Remove from favourites";
       isFavBtnToggled.value = true;
     }
   }

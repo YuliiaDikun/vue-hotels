@@ -17,7 +17,7 @@
       <div class="mt-auto p-3 flex justify-between">
         <router-link
           :to="{ name: 'hotelDetails', params: { id: hotel.id } }"
-          class="inline-block mt-auto px-3 py-1 rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
+          class="inline-block mt-auto text-sm px-3 py-1 rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
           >Read more</router-link
         >
         <FavouriteBtn :hotel="hotel"/>

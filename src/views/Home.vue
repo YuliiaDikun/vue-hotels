@@ -8,8 +8,11 @@
         placeholder="Where are you going?"
         @change="searchHotels"
       />
-    </div>    
+    </div>
     <Hotels :hotels="hotels" />
+    <div v-if="!hotels.length" class="flex justify-center text-gray-600 p-8">
+      loading...
+    </div>
   </div>
 </template>
 
@@ -26,7 +29,7 @@ async function searchHotels() {
   if (!keyword.value) {
     hotels.value = await getHotelsList();
   } else {
-    hotels.value = await getHotelsList(keyword.value);   
+    hotels.value = await getHotelsList(keyword.value);
   }
 }
 
