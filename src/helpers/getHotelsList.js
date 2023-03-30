@@ -7,19 +7,22 @@ const year = new Date().getFullYear();
 
 export const getHotelsList = async (keyword) => {
   try {
-    let locationId;
+    let coordinates;
     if (keyword) {
       const { data } = await hotelInstance.get(
-        `locations/search?query=${keyword}`
+        `/locations/v3/search?q=${keyword}`
       );
-      locationId = data.trackingID;
+      coordinates = {
+        latitude: Number(data.sr[0].coordinates.lat),
+        longitude: Number(data.sr[0].coordinates.long),
+      };
     } else {
-      locationId = "228d3ad890ba4cb2b48050ec9b2c8035";
+      coordinates = { latitude: 40.712843, longitude: -74.005966 };
     }
 
     const config = {
       destination: {
-        regionId: locationId,
+        coordinates: coordinates,
       },
       checkInDate: {
         day: today,
