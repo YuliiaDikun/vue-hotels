@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import axios from "axios";
 import { getHotelsList } from "../helpers/getHotelsList";
 import { computed, onMounted, ref } from "vue";
 
