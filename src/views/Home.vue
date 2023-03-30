@@ -8,55 +8,30 @@
         placeholder="Where are you going?"
         @change="searchHotels"
       />
-    </div>
+    </div>    
     <Hotels :hotels="hotels" />
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
+import { getHotelsList } from "../helpers/getHotelsList";
 import { computed, onMounted, ref } from "vue";
-import hotelInstance from "../service/hotelAPI";
-import store from "../store";
+
 import Hotels from "../components/Hotels.vue";
 
-const today = new Date().getDate();
-const tomorrow = new Date().getDate() + 1;
-const month = new Date().getMonth() + 1;
-const year = new Date().getFullYear();
-
-const NYChotels = ref([]);
+const hotels = ref([]);
 const keyword = ref("");
-const searchedHotels = computed(() => store.state.searchedHotels);
-const hotels = searchedHotels.length > 0 ? searchedHotels : NYChotels;
 
-function searchHotels() {
-  store.dispatch("searchHotels", keyword.value);
+async function searchHotels() {
+  if (!keyword.value) {
+    hotels.value = await getHotelsList();
+  } else {
+    hotels.value = await getHotelsList(keyword.value);   
+  }
 }
 
 onMounted(async () => {
-  try {
-    const config = {
-      destination: {
-        regionId: "228d3ad890ba4cb2b48050ec9b2c8035",
-      },
-      checkInDate: {
-        day: today,
-        month: month,
-        year: year,
-      },
-      checkOutDate: {
-        day: tomorrow,
-        month: month,
-        year: year,
-      },
-      rooms: [{ adults: 1, children: [] }],
-    };
-
-    const hotelSearch = await hotelInstance.post("properties/v2/list", config);
-    hotels.value = hotelSearch.data.data.propertySearch.properties;
-  } catch (error) {
-    console.log(error);
-  }
+  hotels.value = await getHotelsList();
 });
 </script>

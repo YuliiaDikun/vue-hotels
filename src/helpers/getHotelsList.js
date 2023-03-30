@@ -1,15 +1,22 @@
 import hotelInstance from "../service/hotelAPI";
+
 const today = new Date().getDate();
-const tomorrow = new Date().getDate() + 1;
+const tomorrow = new Date().getDate() + 1 === 32 ? 1 : new Date().getDate() + 1;
 const month = new Date().getMonth() + 1;
 const year = new Date().getFullYear();
 
-export async function searchHotels({ commit }, keyword) {
+export const getHotelsList = async (keyword) => {
   try {
-    const { data } = await hotelInstance.get(
-      `locations/search?query=${keyword}`
-    );
-    const locationId = data.trackingID;
+    let locationId;
+    if (keyword) {
+      const { data } = await hotelInstance.get(
+        `locations/search?query=${keyword}`
+      );
+      locationId = data.trackingID;
+    } else {
+      locationId = "228d3ad890ba4cb2b48050ec9b2c8035";
+    }
+
     const config = {
       destination: {
         regionId: locationId,
@@ -28,9 +35,8 @@ export async function searchHotels({ commit }, keyword) {
     };
 
     const hotelSearch = await hotelInstance.post("properties/v2/list", config);
-    const hotels = hotelSearch.data.data.propertySearch.properties;
-    commit("setSearchedHotels", hotels);
+    return hotelSearch.data.data.propertySearch.properties;
   } catch (error) {
     console.log(error);
   }
-}
+};
