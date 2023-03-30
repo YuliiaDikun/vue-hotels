@@ -1,7 +1,7 @@
 <template>
   <button
     @click="setHotelToLocalStorage"
-    class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
+    class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-sky-900 hover:bg-sky-900 hover:text-white transition-colors"
   >
     {{ favBtnText }}
   </button>

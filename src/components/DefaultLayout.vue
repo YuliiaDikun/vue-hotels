@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 min-h-screen">
+  <div class="bg-gradient-to-b from-[#141E30] to-[#243B55] min-h-screen">
     <navbar/>
     <main>
       <router-view />

@@ -9,7 +9,7 @@
         />
       </div>
       <div class="px-3 pt-3">
-        <h3 class="inline-block mb-2 font-semibold border-b-2 border-purple-300">
+        <h3 class="inline-block mb-2 font-semibold border-b-2 border-sky-900">
           {{ hotel.name }}
         </h3>
         <p class="mb-2">Price: {{ hotel.mapMarker?.label }}</p>
@@ -17,7 +17,7 @@
       <div class="mt-auto p-3 flex justify-between">
         <router-link
           :to="{ name: 'hotelDetails', params: { id: hotel.id } }"
-          class="inline-block mt-auto text-sm px-3 py-1 rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
+          class="inline-block mt-auto text-sm px-3 py-1 rounded border-2 border-sky-900 hover:bg-sky-900 hover:text-white transition-colors"
           >Read more</router-link
         >
         <FavouriteBtn :hotel="hotel"/>

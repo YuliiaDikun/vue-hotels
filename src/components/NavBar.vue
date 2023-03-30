@@ -3,12 +3,12 @@
       
         <router-link
         :to="{ name: 'home' }"
-        class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100  text-purple-500 font-bold"
+        class="inline-flex items-center h-full transition-colors px-8 hover:bg-sky-100  text-sky-900 font-bold uppercase"
       >
         Home
       </router-link>
       
-        <router-link :to="{ name: 'byCity' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-purple-100  text-purple-500 font-bold">
+        <router-link :to="{ name: 'byCity' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-sky-100  text-sky-900 font-bold uppercase">
             Favourites
         </router-link>
       

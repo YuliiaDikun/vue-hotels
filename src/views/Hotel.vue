@@ -1,6 +1,6 @@
 <template>
-  <section v-if="hotel" class="max-w-5xl mx-auto p-8">
-    <h2 class="text-4xl font-bold mb-5 text-purple-500">
+  <section v-if="hotel" class="max-w-5xl mx-auto p-8 bg-white border-t-2 border-sky-900">
+    <h2 class="text-4xl font-bold mb-5 text-sky-900">
       {{ hotel.summary?.name }}
     </h2>
 
@@ -11,20 +11,20 @@
     />
 
     <div class="flex flex-col gap-3">
-      <p class="inline-flex gap-2 text-purple-500 font-bold">
+      <p class="inline-flex gap-2 text-sky-900 font-bold text-xl">
         <img
           src="../assets/star-svgrepo-com.svg"
           alt="star rating"
           width="20"
         />
         Hotel Rating:
-        <span class="text-black">
+        <span class="text-black  text-l">
           {{ hotel.summary?.overview.propertyRating.rating }} stars.</span
         >
       </p>
 
       <p
-        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold"
+        class="inline-flex items-center justify-start gap-1 text-sky-900 font-bold text-xl"
       >
         <img src="../assets/location.svg" alt="location" width="20" />
         Location area:
@@ -33,7 +33,7 @@
         }}</span>
       </p>
       <p
-        class="inline-flex items-start justify-start gap-1 text-purple-500 font-bold"
+        class="inline-flex items-start justify-start gap-1 text-sky-900 font-bold text-xl"
       >
         <img src="../assets/around.svg" alt="around" width="20" />
         What is around:
@@ -41,13 +41,13 @@
       <p class="text-slate-600 font-bold">
         {{ hotel.summary?.location.whatsAround.editorial.content[0] }}
       </p>
-      <p class="inline-flex gap-2 text-purple-500 font-bold">
+      <p class="inline-flex gap-2 text-sky-900 font-bold text-xl">
         <img src="../assets/chekin.svg" alt="chekin" width="20" />
         Checkin Instructions:
       </p>
       <ol class="px-4">
         <li
-          class="text-slate-600 font-medium"
+          class="text-slate-600 font-bold "
           v-for="(inctruction, index) in hotel.summary?.policies
             .checkinInstructions"
           :key="index"
@@ -57,7 +57,7 @@
       </ol>
 
       <p
-        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold"
+        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold text-xl"
       >
         <img src="../assets/pets.svg" alt="dog" width="20" />
         Pets politics:
@@ -67,7 +67,7 @@
       </p>
 
       <p
-        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold"
+        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold text-xl"
       >
         <img src="../assets/review.svg" alt="review" width="20" />
         Review:
