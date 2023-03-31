@@ -94,8 +94,7 @@ const id = route.params.id;
 
 onMounted(async () => {
   const fetchedHotel = await getHotelInfo(id);
-  fetchedHotel.id = id;
-  console.log(fetchedHotel);
+  fetchedHotel.id = id; 
   hotel.value = fetchedHotel;
   isLoading.value = true;
 });

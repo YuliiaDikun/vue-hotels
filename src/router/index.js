@@ -14,7 +14,7 @@ const routes = [
         component: Home,
       },
       {
-        path: "/city/:city?",
+        path: "/city",
         name: "byCity",
         component: HotelsList,
       },

@@ -26,18 +26,15 @@ function setHotelToLocalStorage() {
 
   if (!Object.keys(favHotels).length) {
     favHotels[hotel.id] = hotel;
-    setLocalStorage("favHotels", favHotels);
-    console.log("Success! The hotel has been added to your favourites.");
+    setLocalStorage("favHotels", favHotels);  
   } else {
     const favHotelsId = Object.keys(favHotels);
     if (favHotelsId.includes(String(hotel.id))) {
       delete favHotels[hotel.id];
-      setLocalStorage("favHotels", favHotels);
-      console.log("Success! The hotel has been deleted from your favourites.");
+      setLocalStorage("favHotels", favHotels);      
     } else {
       favHotels[hotel.id] = hotel;
-      setLocalStorage("favHotels", favHotels);
-      console.log("Success! The hotel has been added to your favourites.");
+      setLocalStorage("favHotels", favHotels);    
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="max-w-5xl my-0 mx-auto pb-12">
-    <div class="flex p-8 pb-0 justify-center">
+    <div class="flex pb-0 justify-center my-8">
       <input
         v-model="keyword"
         type="text"
@@ -13,7 +13,7 @@
     <button
       @click="loadMoreHotels"
       v-show="isNextPageExist"
-      class="block mx-auto my-0 border-2 rounded text-bold  border-white text-white text-lg px-4 py-2 hover:text-gray-800 hover:border-gray-100 hover:bg-gray-100 transition-colors"
+      class="block mx-auto my-4 border-2 rounded text-bold border-white text-white text-lg px-4 py-2 hover:text-gray-800 hover:border-gray-100 hover:bg-gray-100 transition-colors"
     >
       Load more
     </button>
@@ -26,7 +26,6 @@
 
 <script setup>
 import { getHotelsList } from "../helpers/getHotelsList";
-
 import { computed, onMounted, ref } from "vue";
 
 import Hotels from "../components/Hotels.vue";
@@ -44,13 +43,10 @@ function loadMoreHotels() {
   page++;
   isNextPageExist.value = TOTAL_PAGE.value <= page ? false : true;
 
-  console.log("page " + page);
-
   const offset = PER_PAGE * page - PER_PAGE;
 
-  console.log("offset " + offset);
   const lastInx = offset + PER_PAGE;
-  console.log("last index " + lastInx);
+
   hotelPerPage.value = [
     ...hotelPerPage.value,
     ...hotels.value.slice(offset, lastInx),
@@ -63,6 +59,10 @@ async function searchHotels() {
   } else {
     hotels.value = await getHotelsList(keyword.value);
   }
+  hotelPerPage.value = hotels.value.slice(0, PER_PAGE);
+  TOTAL_PAGE.value = Math.ceil(hotels.value.length / PER_PAGE);
+
+  isNextPageExist.value = TOTAL_PAGE.value > 1 ? true : false;
 }
 
 onMounted(async () => {
