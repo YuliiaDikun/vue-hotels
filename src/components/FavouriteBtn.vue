@@ -15,8 +15,7 @@ let isFavBtnToggled = ref(false);
 let favBtnText = ref("Add to favourites");
 
 function setHotelToLocalStorage() {
-  isFavBtnToggled.value = !isFavBtnToggled.value;
- 
+  isFavBtnToggled.value = !isFavBtnToggled.value; 
   favBtnText.value = isFavBtnToggled.value
     ? "Remove from favourites"
     : "Add to favourites";
@@ -26,15 +25,15 @@ function setHotelToLocalStorage() {
 
   if (!Object.keys(favHotels).length) {
     favHotels[hotel.id] = hotel;
-    setLocalStorage("favHotels", favHotels);  
+    setLocalStorage("favHotels", favHotels);
   } else {
     const favHotelsId = Object.keys(favHotels);
     if (favHotelsId.includes(String(hotel.id))) {
       delete favHotels[hotel.id];
-      setLocalStorage("favHotels", favHotels);      
+      setLocalStorage("favHotels", favHotels);
     } else {
       favHotels[hotel.id] = hotel;
-      setLocalStorage("favHotels", favHotels);    
+      setLocalStorage("favHotels", favHotels);
     }
   }
 }
@@ -42,7 +41,7 @@ function setHotelToLocalStorage() {
 onMounted(() => {
   let favHotels = getLocalStorage("favHotels");
   favHotels = favHotels ? favHotels : {};
-  
+
   if (!Object.keys(favHotels).length) {
     favBtnText.value = "Add to favourites";
     isFavBtnToggled.value = false;
@@ -55,10 +54,10 @@ onMounted(() => {
   }
 });
 
-const { hotel } = defineProps({
+const { hotel, isClicked} = defineProps({
   hotel: {
     required: true,
     type: Object,
-  },
+  },  
 });
 </script>

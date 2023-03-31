@@ -8,7 +8,7 @@
         Home
       </router-link>
       
-        <router-link :to="{ name: 'byCity' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-sky-100  text-sky-900 font-bold uppercase">
+        <router-link :to="{ name: 'favourites' }"  class="inline-flex items-center h-full transition-colors px-8 hover:bg-sky-100  text-sky-900 font-bold uppercase">
             Favourites
         </router-link>
       

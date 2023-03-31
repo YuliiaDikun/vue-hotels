@@ -57,7 +57,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, onUpdated, ref } from "vue";
 import Hotels from "../components/Hotels.vue";
 import FavouriteBtn from "../components/FavouriteBtn.vue";
 import { getLocalStorage } from "../helpers/localStorage";
@@ -65,7 +65,7 @@ import { getLocalStorage } from "../helpers/localStorage";
 const hotels = ref([]);
 const message = ref("");
 
-onMounted(() => {
+function loadFavouritesFromLocalStorage() {
   let favHotels = getLocalStorage("favHotels");
   favHotels = favHotels ? favHotels : {};
   if (!Object.values(favHotels)) {
@@ -73,5 +73,10 @@ onMounted(() => {
   } else {
     hotels.value = Object.values(favHotels);
   }
+}
+
+onMounted(() => {
+  loadFavouritesFromLocalStorage();
 });
+
 </script>
