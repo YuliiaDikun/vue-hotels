@@ -1,6 +1,6 @@
 <template>
-  <section class="max-w-5xl my-0 mx-auto">
-    <h1 class="text-4xl font-bold mb-5 mt-5 text-purple-500 text-center">
+  <section class="max-w-5xl my-0 mx-auto bg-white border-t-2 border-sky-900">
+    <h1 class="text-4xl font-bold mb-5 mt-5 text-sky-900 text-center">
       Your list of favourite hotels
     </h1>
     <div v-if="!hotels.length" class="flex justify-center text-gray-600 p-8">
@@ -31,13 +31,13 @@
           <div class="px-3 pt-3">
             <h3
               v-if="hotel.name"
-              class="inline-block mb-2 font-semibold border-b-2 border-purple-300"
+              class="inline-block mb-2 font-semibold border-b-2 border-sky-900"
             >
               {{ hotel.name }}
             </h3>
             <h3
               v-else
-              class="inline-block mb-2 font-semibold border-b-2 border-purple-300"
+              class="inline-block mb-2 font-semibold border-b-2 border-sky-900"
             >
               {{ hotel.summary?.name }}
             </h3>
@@ -45,7 +45,7 @@
           <div class="mt-auto p-3 flex justify-between">
             <router-link
               :to="{ name: 'hotelDetails', params: { id: hotel.id } }"
-              class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-purple-300 hover:bg-purple-300 hover:text-white transition-colors"
+              class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-sky-900 hover:bg-sky-900 hover:text-white transition-colors"
               >Read more</router-link
             >
             <FavouriteBtn :hotel="hotel" />

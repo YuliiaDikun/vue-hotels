@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-5xl my-0 mx-auto pb-12">
+  <section class="max-w-5xl my-0 mx-auto pb-12">
     <div class="flex p-8 pb-0 justify-center">
       <input
         v-model="keyword"
@@ -13,7 +13,7 @@
     <button
       @click="loadMoreHotels"
       v-show="isNextPageExist"
-      class="block mx-auto my-0 border-2 border-white text-white text-lg px-4 py-2 hover:text-gray-100 hover:border-gray-100 hover:bg-gray-700 transition-colors"
+      class="block mx-auto my-0 border-2 rounded text-bold  border-white text-white text-lg px-4 py-2 hover:text-gray-800 hover:border-gray-100 hover:bg-gray-100 transition-colors"
     >
       Load more
     </button>
@@ -21,7 +21,7 @@
     <div v-if="!hotels.length" class="flex justify-center text-gray-600 p-8">
       loading...
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup>

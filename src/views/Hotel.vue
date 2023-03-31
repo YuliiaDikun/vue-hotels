@@ -55,9 +55,8 @@
           {{ index + 1 }}. {{ inctruction }}
         </li>
       </ol>
-
       <p
-        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold text-xl"
+        class="inline-flex items-center justify-start gap-1 text-sky-900 font-bold text-xl"
       >
         <img src="../assets/pets.svg" alt="dog" width="20" />
         Pets politics:
@@ -65,9 +64,8 @@
           hotel.summary?.policies.pets.body[0]
         }}</span>
       </p>
-
       <p
-        class="inline-flex items-center justify-start gap-1 text-purple-500 font-bold text-xl"
+        class="inline-flex items-center justify-start gap-1 text-sky-900 font-bold text-xl"
       >
         <img src="../assets/review.svg" alt="review" width="20" />
         Review:
@@ -75,10 +73,10 @@
           hotel.reviewInfo?.summary.overallScoreWithDescriptionA11y.value
         }}</span>
       </p>
-
       <FavouriteBtn :hotel="hotel" />
     </div>
   </section>
+  <p v-else class="flex justify-center text-gray-600 p-8">loading...</p>
 </template>
 
 <script setup>

@@ -9,10 +9,10 @@
         />
       </div>
       <div class="px-3 pt-3">
-        <h3 class="inline-block mb-2 font-semibold border-b-2 border-sky-900">
+        <h3 class="mb-2 font-semibold border-b-2 border-sky-900">
           {{ hotel.name }}
         </h3>
-        <p class="mb-2">Price: {{ hotel.mapMarker?.label }}</p>
+        <p class="mb-2">Price: <strong>{{ hotel.mapMarker?.label }}</strong></p>
       </div>
       <div class="mt-auto p-3 flex justify-between">
         <router-link
