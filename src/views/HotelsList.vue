@@ -48,7 +48,10 @@
               class="inline-block mt-auto px-3 py-1 text-sm rounded border-2 border-sky-900 hover:bg-sky-900 hover:text-white transition-colors"
               >Read more</router-link
             >
-            <FavouriteBtn :hotel="hotel" />
+            <FavouriteBtn
+              :hotel="hotel"
+              @isLocalStorageUpdated="handleLocalStorage"
+            />
           </div>
         </div>
       </li>
@@ -65,6 +68,13 @@ import { getLocalStorage } from "../helpers/localStorage";
 const hotels = ref([]);
 const message = ref("");
 
+function handleLocalStorage(value) {  
+  if (value) {    
+    let favHotels = getLocalStorage("favHotels");   
+    hotels.value = Object.values(favHotels);  
+  }
+}
+
 function loadFavouritesFromLocalStorage() {
   let favHotels = getLocalStorage("favHotels");
   favHotels = favHotels ? favHotels : {};
@@ -78,5 +88,4 @@ function loadFavouritesFromLocalStorage() {
 onMounted(() => {
   loadFavouritesFromLocalStorage();
 });
-
 </script>

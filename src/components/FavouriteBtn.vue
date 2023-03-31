@@ -8,13 +8,14 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref,defineEmits } from "vue";
 import { getLocalStorage, setLocalStorage } from "../helpers/localStorage";
 
 let isFavBtnToggled = ref(false);
 let favBtnText = ref("Add to favourites");
-
+ const emit = defineEmits(['isLocalStorageUpdated'])
 function setHotelToLocalStorage() {
+  
   isFavBtnToggled.value = !isFavBtnToggled.value; 
   favBtnText.value = isFavBtnToggled.value
     ? "Remove from favourites"
@@ -29,13 +30,14 @@ function setHotelToLocalStorage() {
   } else {
     const favHotelsId = Object.keys(favHotels);
     if (favHotelsId.includes(String(hotel.id))) {
-      delete favHotels[hotel.id];
+      delete favHotels[hotel.id];      
       setLocalStorage("favHotels", favHotels);
     } else {
       favHotels[hotel.id] = hotel;
       setLocalStorage("favHotels", favHotels);
     }
   }
+  emit("isLocalStorageUpdated", true);
 }
 
 onMounted(() => {
